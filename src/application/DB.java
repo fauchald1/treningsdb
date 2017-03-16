@@ -84,6 +84,47 @@ public class DB
     return avg;
   }
 
+  public String getLast() {
+    String last = "";
+    String dato = "";
+    String tidspunkt = "";
+    String varighet = "";
+    String notat = "";
+    Integer id = 0;
+    try (Connection connection = this.connect();) {
+      Statement statement = connection.createStatement();
+      statement.setQueryTimeout(10);  // Timeout is 10s
+      
+      ResultSet resultSet = statement.executeQuery("SELECT * FROM Okt ORDER BY OktID DESC LIMIT 1");
+      while (resultSet.next()) {    
+          id = resultSet.getInt("OktID");
+          dato = resultSet.getString("Dato");
+          tidspunkt = resultSet.getString("Tidspunkt");
+          varighet = resultSet.getString("Varighet");
+          notat = resultSet.getString("Notat");
+      }
+    }
+    catch(SQLException e){ System.out.println(e); }
+
+    last += "Dato:" + dato + " | " + "Tidspunkt:" + tidspunkt + " | " + "Varighet:" + varighet + "\nNotat: " + notat; 
+
+    String sql = "SELECT * FROM OktOvelse INNER JOIN Styrke ON OktOvelse.OktOvelseID=Styrke.OktOvelseID INNER JOIN Ovelse ON OktOvelse.OvelseID=Ovelse.OvelseID WHERE OktID ='" + id + "'";
+    
+    try (Connection connection = this.connect();) {
+      Statement statement = connection.createStatement();
+      statement.setQueryTimeout(10);  // Timeout is 10s
+      ResultSet resultSet = statement.executeQuery(sql);
+
+      while (resultSet.next()) {    
+          last += resultSet.getString("Navn") + ":\n Sett: " + resultSet.getString("Sett") + ":\n Reps: " + resultSet.getString("Repetisjoner") + ":\n Belastning: " + resultSet.getString("Belastning");
+          last += ":\n Form: " + resultSet.getString("Form") + ":\n Prestasjon: " + resultSet.getString("Prestasjon") + "\n\n";
+      }
+
+    }
+    catch(SQLException e){ System.out.println(e); }
+    return last;
+  }
+
   public Integer getOvelseID(String ovelse_navn) {
     String sql = "SELECT OvelseID FROM Ovelse WHERE Navn = '" + ovelse_navn + "'";
     Integer id = 0;
