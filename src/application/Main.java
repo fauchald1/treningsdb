@@ -30,6 +30,18 @@ class Session {
 	    	  System.out.println("\nØvelse:" + (i+1)+":");
 	    	  String ovelse = scanner.nextLine();
 	    	  System.out.println(ovelse + "\n");
+	    	  if (db.checkOvelse(ovelse)) {
+	    	    System.out.println("\nForm (ranger med 1-10):");
+	          String form = scanner.nextLine();
+	          System.out.println("\nPrestasjon (ranger med 1-10):");
+	          String prestasjon = scanner.nextLine();
+	    	  }
+	    	  else {
+	    	    System.out.println("\nNavn på øvelse:");
+            String form = scanner.nextLine();
+            System.out.println("\nPrestasjon (ranger med 1-10):");
+            String prestasjon = scanner.nextLine();
+	    	  }
 			  }
 	    	}
 	    else if(line.equals("best")) {
