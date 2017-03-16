@@ -1,4 +1,4 @@
 /bin/
-*.project*
-*.classpath*
-*.DS_store*
+.project
+.classpath
+.DS_store
