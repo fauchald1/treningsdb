@@ -41,6 +41,19 @@ public class DB
     catch(SQLException e){ System.err.println(e.getMessage()); }
   }
 
+  public Integer getOvelseID(String ovelse_navn) {
+    String sql = "SELECT OvelseID FROM Ovelse WHERE Navn = '" + ovelse_navn + "'";
+    Integer id = 0;
+    try (Connection connection = this.connect();) {
+      Statement statement = connection.createStatement();
+      statement.setQueryTimeout(10);  // Timeout is 10s
+      ResultSet resultSet = statement.executeQuery(sql);
+      id = resultSet.getInt("OvelseID");
+    }
+    catch(SQLException e){ System.out.println(e); }
+    return id;
+  }
+
   public boolean checkOvelse(String ovelse_navn) {
     String sql = "SELECT * FROM Ovelse WHERE Navn = '" + ovelse_navn + "'";
     try (Connection connection = this.connect();) {
@@ -54,5 +67,10 @@ public class DB
     }
     catch(SQLException e){ return false; }
     return false;
+  }
+
+  public void setOktOvelse(Integer form, Integer prestasjon, Integer sett, Integer reps, Integer belastning, Integer id) {
+
+    
   }
 }
