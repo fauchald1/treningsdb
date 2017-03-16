@@ -15,26 +15,26 @@ class Session {
 	    String line = scanner.nextLine();
 		    
 	    if(line.equals("ny")) {
-	      System.out.println("\nDato:\n");
+	      System.out.println("\nDato:");
 	      String dato = scanner.nextLine();
-	      System.out.println("\nTidspunkt:\n");
+	      System.out.println("\nTidspunkt:");
 	      String tid = scanner.nextLine();
-				System.out.println("\nVarighet:\n");
-				String varighet = scanner.nextLine();
-				System.out.println("\nNotat:");
-				String notat = scanner.nextLine();
-				System.out.println("\nAntall øvelser:\n");
-			  String antall = scanner.nextLine();
+	      System.out.println("\nVarighet:");
+	      String varighet = scanner.nextLine();
+	      System.out.println("\nNotat:");
+	      String notat = scanner.nextLine();
+	      System.out.println("\nAntall øvelser:");
+	      String antall = scanner.nextLine();
 				
-			  for (int i = 0; i < Integer.parseInt(antall); i++) {
-			    System.out.println("\nØvelse:\n");
-			    String ovelse = scanner.nextLine();
-			    System.out.println(ovelse + "\n");
+	      for (int i = 0; i < Integer.parseInt(antall); i++) {
+	    	  System.out.println("\nØvelse:" + (i+1)+":");
+	    	  String ovelse = scanner.nextLine();
+	    	  System.out.println(ovelse + "\n");
 			  }
-		  }
+	    	}
 	    else if(line.equals("best")) {
 	      System.out.println("Beste trening:\n");
-	      }
+	    }
 	    else if(line.equals("stats")) {
 	      System.out.println("Beste trening:\n");
 	    }
