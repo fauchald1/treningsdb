@@ -85,7 +85,7 @@ public class DB
       
       ResultSet resultSet = statement.executeQuery("SELECT * FROM Okt ORDER BY OktID DESC LIMIT 1");
       while (resultSet.next()) {    
-          id = resultSet.getInt("OvelseID");
+          id = resultSet.getInt("OktID");
       }
     }
     catch(SQLException e){ System.out.println(e); }
