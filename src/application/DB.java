@@ -42,20 +42,17 @@ public class DB
   }
 
   public boolean checkOvelse(String ovelse_navn) {
-    String sql = "SELECT * FROM Ovelse WHERE Navn = " + ovelse_navn;
-    Boolean exists = true;
-    
+    String sql = "SELECT * FROM Ovelse WHERE Navn = '" + ovelse_navn + "'";
     try (Connection connection = this.connect();) {
       Statement statement = connection.createStatement();
       statement.setQueryTimeout(10);  // Timeout is 10s
 
       ResultSet resultSet = statement.executeQuery(sql);
-      
-      if (!resultSet.next() ) {    
-        exists = false;
+      if (resultSet.next()) {    
+        return true;
       }
     }
-    catch(SQLException e){ exists = false; }
-    return exists;
+    catch(SQLException e){ return false; }
+    return false;
   }
 }
