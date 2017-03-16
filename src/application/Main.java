@@ -41,7 +41,7 @@ class Session {
             String reps = scanner.nextLine();
             System.out.println("\nBelastning i kilo:");
             String belastning = scanner.nextLine();
-            OvelseID = getOvelseID(ovelse);
+            int OvelseID = db.getOvelseID(ovelse);
      //       db.setOktOvelse(form, prestasjon, sett, reps, belastning, OvelseID)
          	  }
 	    	  
@@ -51,6 +51,7 @@ class Session {
             String nyovelse = scanner.nextLine();
             System.out.println("\nBeskriv øvelsen:");
             String beskrivelse = scanner.nextLine();
+//            db.setOvelse(nyovelse, beskrivelse)
             System.out.println("\nForm (ranger med 1-10):");
             String form = scanner.nextLine();
             System.out.println("\nPrestasjon (ranger med 1-10):");
@@ -61,7 +62,7 @@ class Session {
             String reps = scanner.nextLine();
             System.out.println("\nBelastning i kilo:");
             String belastning = scanner.nextLine();
-            OvelseID = getOvelseID(nyovelse);
+            int OvelseID = db.getOvelseID(nyovelse);
    //         db.setOktOvelse(form, prestasjon, sett, reps, belastning, OvelseID)
             
 	    	  }
