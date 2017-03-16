@@ -106,7 +106,7 @@ public class DB
     }
     catch(SQLException e){ System.out.println(e); }
 
-    last += "Dato:" + dato + " | " + "Tidspunkt:" + tidspunkt + " | " + "Varighet:" + varighet + "\nNotat: " + notat; 
+    last += "Dato:" + dato + " | " + "Tidspunkt:" + tidspunkt + " | " + "Varighet:" + varighet + "\nNotat:" + notat + "\n"; 
 
     String sql = "SELECT * FROM OktOvelse INNER JOIN Styrke ON OktOvelse.OktOvelseID=Styrke.OktOvelseID INNER JOIN Ovelse ON OktOvelse.OvelseID=Ovelse.OvelseID WHERE OktID ='" + id + "'";
     
