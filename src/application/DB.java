@@ -83,7 +83,7 @@ public class DB
       Statement statement = connection.createStatement();
       statement.setQueryTimeout(10);  // Timeout is 10s
       
-      ResultSet resultSet = statement.executeQuery(sql);
+      ResultSet resultSet = statement.executeQuery("SELECT * FROM Okt ORDER BY OktID DESC LIMIT 1");
       while (resultSet.next()) {    
           id = resultSet.getInt("OvelseID");
       }
@@ -104,7 +104,12 @@ public class DB
   }
 
   public void setOktOvelse(Integer form, Integer prestasjon, Integer sett, Integer reps, Integer belastning, Integer id) {
-
-
+    String sql = "INSERT INTO OktOvelse (Navn, Beskrivelse) VALUES ('" + navn + "', '" + beskrivelse + "')";
+    try (Connection connection = this.connect();) {
+      Statement statement = connection.createStatement();
+      statement.setQueryTimeout(10);  // Timeout is 10s
+      statement.executeUpdate(sql);
+    }
+    catch(SQLException e){ System.out.println(e); }
   }
 }
