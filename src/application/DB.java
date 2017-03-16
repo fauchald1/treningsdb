@@ -70,7 +70,7 @@ public class DB
   }
 
   public void setOvelse(String navn, String beskrivelse) {
-    String sql = "INSERT INTO Ovelse (Navn, Beskrivelse) VALUES (" + navn + "," + beskrivelse + ")";
+    String sql = "INSERT INTO Ovelse (Navn, Beskrivelse) VALUES ('" + navn + "', '" + beskrivelse + "')";
     try (Connection connection = this.connect();) {
       Statement statement = connection.createStatement();
       statement.setQueryTimeout(10);  // Timeout is 10s
