@@ -69,8 +69,18 @@ public class DB
     return false;
   }
 
+  public void setOvelse(String navn, String beskrivelse) {
+    String sql = "INSERT INTO Ovelse (Navn, Beskrivelse) VALUES (" + navn + "," + beskrivelse + ")";
+    try (Connection connection = this.connect();) {
+      Statement statement = connection.createStatement();
+      statement.setQueryTimeout(10);  // Timeout is 10s
+      statement.executeUpdate(sql);
+    }
+    catch(SQLException e){ System.out.println(e); }
+  }
+
   public void setOktOvelse(Integer form, Integer prestasjon, Integer sett, Integer reps, Integer belastning, Integer id) {
 
-    
+
   }
 }
