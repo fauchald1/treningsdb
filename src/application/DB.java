@@ -69,6 +69,30 @@ public class DB
     return false;
   }
 
+  public Integer setOkt(String dato, String tidspunkt, String varighet, String notat) {
+    String sql = "INSERT INTO Okt (Dato, Tidspunkt, Varighet, Notat) VALUES ('" + dato + "', '" + tidspunkt + "', '" + varighet + "', '" + notat  + "')";
+    Integer id = 0;
+    try (Connection connection = this.connect();) {
+      Statement statement = connection.createStatement();
+      statement.setQueryTimeout(10);  // Timeout is 10s
+      statement.executeUpdate(sql);
+    }
+    catch(SQLException e){ System.out.println(e); }
+    
+    try (Connection connection = this.connect();) {
+      Statement statement = connection.createStatement();
+      statement.setQueryTimeout(10);  // Timeout is 10s
+      
+      ResultSet resultSet = statement.executeQuery(sql);
+      while (resultSet.next()) {    
+          id = resultSet.getInt("OvelseID");
+      }
+    }
+    catch(SQLException e){ System.out.println(e); }
+    
+    return id;
+  }
+
   public void setOvelse(String navn, String beskrivelse) {
     String sql = "INSERT INTO Ovelse (Navn, Beskrivelse) VALUES ('" + navn + "', '" + beskrivelse + "')";
     try (Connection connection = this.connect();) {
