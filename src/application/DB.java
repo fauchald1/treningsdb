@@ -43,7 +43,7 @@ public class DB
   }
 
   public double getBest(String ovelse) {
-    String sql = "SELECT * FROM Styrke";
+    String sql = "SELECT * FROM Styrke INNER JOIN OktOvelse ON Styrke.OktOvelseID = OktOvelse.OktOvelseID WHERE OktOvelseID.OvelseID = '" + getOvelseID(ovelse) + "'";
     Double best = 0.0;
     //List<double> data = new ArrayList<double>();
     try (Connection connection = this.connect();) {
