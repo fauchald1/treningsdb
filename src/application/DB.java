@@ -116,8 +116,8 @@ public class DB
       ResultSet resultSet = statement.executeQuery(sql);
 
       while (resultSet.next()) {    
-          last += resultSet.getString("Navn") + ":\n Sett: " + resultSet.getString("Sett") + ":\n Reps: " + resultSet.getString("Repetisjoner") + ":\n Belastning: " + resultSet.getString("Belastning");
-          last += ":\n Form: " + resultSet.getString("Form") + ":\n Prestasjon: " + resultSet.getString("Prestasjon") + "\n\n";
+          last += resultSet.getString("Navn") + ":\nSett: " + resultSet.getString("Sett") + ":\nReps: " + resultSet.getString("Repetisjoner") + ":\nBelastning: " + resultSet.getString("Belastning");
+          last += ":\nForm: " + resultSet.getString("Form") + ":\nPrestasjon: " + resultSet.getString("Prestasjon") + "\n\n";
       }
 
     }
