@@ -35,13 +35,35 @@ class Session {
 	          String form = scanner.nextLine();
 	          System.out.println("\nPrestasjon (ranger med 1-10):");
 	          String prestasjon = scanner.nextLine();
+	          System.out.println("\nAntall sett:");
+            String sett = scanner.nextLine();
+            System.out.println("\nAntall repetisjoner:");
+            String reps = scanner.nextLine();
+            System.out.println("\nBelastning i kilo:");
+            String belastning = scanner.nextLine();
+     //       db.setOktOvelse(form, prestasjon, sett, reps, belastning, OvelseID)
+            
+            
 	    	  }
 	    	  else {
+	    	    System.out.println("Fant ikke øvelsen, vennligst opprett øvelsen:");
 	    	    System.out.println("\nNavn på øvelse:");
             String form = scanner.nextLine();
+            System.out.println("\nBeskriv øvelsen:");
+            String beskrivelse = scanner.nextLine();
             System.out.println("\nPrestasjon (ranger med 1-10):");
             String prestasjon = scanner.nextLine();
+            System.out.println("\nAntall sett:");
+            String sett = scanner.nextLine();
+            System.out.println("\nAntall repetisjoner:");
+            String reps = scanner.nextLine();
+            System.out.println("\nBelastning i kilo:");
+            String belastning = scanner.nextLine();
+   //         db.setOktOvelse(form, prestasjon, sett, reps, belastning, OvelseID)
+            
 	    	  }
+	    	  
+	    	  
 			  }
 	    	}
 	    else if(line.equals("best")) {
