@@ -61,6 +61,29 @@ public class DB
     return best;
   }
 
+  public double getStats() {
+    String sql = "SELECT * FROM Styrke";
+    List<Double> data = new ArrayList<Double>();
+    Double avg = 0.0;
+    try (Connection connection = this.connect();) {
+      Statement statement = connection.createStatement();
+      statement.setQueryTimeout(10);  // Timeout is 10s
+      ResultSet resultSet = statement.executeQuery(sql);
+      while(resultSet.next()) {
+        data.add(resultSet.getDouble("belastning"));
+      }
+      Double sum = 0.0;
+      if(!data.isEmpty()) {
+        for (Double d : data) {
+          sum += d;
+        }
+        avg = sum / data.size();
+      }
+    }
+    catch(SQLException e){ System.err.println(e.getMessage()); }
+    return avg;
+  }
+
   public Integer getOvelseID(String ovelse_navn) {
     String sql = "SELECT OvelseID FROM Ovelse WHERE Navn = '" + ovelse_navn + "'";
     Integer id = 0;
