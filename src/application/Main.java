@@ -15,19 +15,19 @@ class Session {
 		    String line = scanner.nextLine();
 		    
 		    if(line.equals("ny")) {
-				System.out.println("\nDato:\n");
+				System.out.println("\nDato:");
 				String dato = scanner.nextLine();
-				System.out.println("\nTidspunkt:\n");
+				System.out.println("\nTidspunkt:");
 				String tid = scanner.nextLine();
-				System.out.println("\nVarighet:\n");
+				System.out.println("\nVarighet:");
 				String varighet = scanner.nextLine();
-				System.out.println("\nNotat:\n");
+				System.out.println("\nNotat:");
 				String notat = scanner.nextLine();
-				System.out.println("\nAntall øvelser:\n");
+				System.out.println("\nAntall øvelser:");
 				String antall = scanner.nextLine();
 				
 				for (int i = 0; i < Integer.parseInt(antall); i++) {
-					System.out.println("\nØvelse:\n");
+					System.out.println("\nØvelse" + (i+1)+":");
 					String ovelse = scanner.nextLine();
 					System.out.println(ovelse + "\n");
 				}
