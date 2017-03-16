@@ -55,7 +55,7 @@ public class DB
         exists = false;
       }
     }
-    catch(SQLException e){ System.err.println(e.getMessage()); }
+    catch(SQLException e){ exists = false; }
     return exists;
   }
 }
