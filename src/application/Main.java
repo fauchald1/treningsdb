@@ -21,7 +21,7 @@ class Session {
 	      String tid = scanner.nextLine();
 				System.out.println("\nVarighet:\n");
 				String varighet = scanner.nextLine();
-				System.out.println("\nNotat:\n");
+				System.out.println("\nNotat:");
 				String notat = scanner.nextLine();
 				System.out.println("\nAntall øvelser:\n");
 			  String antall = scanner.nextLine();
