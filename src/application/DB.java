@@ -125,7 +125,7 @@ public class DB
     }
     catch(SQLException e){ System.out.println(e); }
 
-    String sql = "INSERT INTO Styrke (OktOvelseID, Sett, Repetisjoner, Belastning) VALUES ('" + id + "', '" + sett + "', '" + reps + "', '" + belastning  + "')";
+    sql = "INSERT INTO Styrke (OktOvelseID, Sett, Repetisjoner, Belastning) VALUES ('" + id + "', '" + sett + "', '" + reps + "', '" + belastning  + "')";
     try (Connection connection = this.connect();) {
       Statement statement = connection.createStatement();
       statement.setQueryTimeout(10);  // Timeout is 10s

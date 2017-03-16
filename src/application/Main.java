@@ -23,6 +23,9 @@ class Session {
 	      String varighet = scanner.nextLine();
 	      System.out.println("\nNotat:");
 	      String notat = scanner.nextLine();
+	      int OktID = db.setOkt(dato, tid, varighet, notat);       
+
+	      
 	      System.out.println("\nAntall øvelser:");
 	      String antall = scanner.nextLine();
 				
@@ -32,38 +35,36 @@ class Session {
 	    	  System.out.println(ovelse + "\n");
 	    	  if (db.checkOvelse(ovelse)) {
 	    	    System.out.println("\nForm (ranger med 1-10):");
-	          String form = scanner.nextLine();
+	          int form = Integer.parseInt(scanner.nextLine());
 	          System.out.println("\nPrestasjon (ranger med 1-10):");
-	          String prestasjon = scanner.nextLine();
+	          int prestasjon = Integer.parseInt(scanner.nextLine());
 	          System.out.println("\nAntall sett:");
-            String sett = scanner.nextLine();
+            int sett = Integer.parseInt(scanner.nextLine());
             System.out.println("\nAntall repetisjoner:");
-            String reps = scanner.nextLine();
+            int reps = Integer.parseInt(scanner.nextLine());
             System.out.println("\nBelastning i kilo:");
-            String belastning = scanner.nextLine();
+            int belastning = Integer.parseInt(scanner.nextLine());
             int OvelseID = db.getOvelseID(ovelse);
-     //       db.setOktOvelse(form, prestasjon, sett, reps, belastning, OvelseID)
+            db.setOktOvelse(OvelseID, OktID, form, prestasjon, sett, reps, belastning);
          	  }
 	    	  
 	    	  else {
 	    	    System.out.println("Fant ikke øvelsen, vennligst opprett øvelsen:");
-	    	    System.out.println("\nNavn på øvelse:");
-            String nyovelse = scanner.nextLine();
             System.out.println("\nBeskriv øvelsen:");
             String beskrivelse = scanner.nextLine();
-//            db.setOvelse(nyovelse, beskrivelse)
+            db.setOvelse(ovelse, beskrivelse);
             System.out.println("\nForm (ranger med 1-10):");
-            String form = scanner.nextLine();
+            int form = Integer.parseInt(scanner.nextLine());
             System.out.println("\nPrestasjon (ranger med 1-10):");
-            String prestasjon = scanner.nextLine();
+            int prestasjon = Integer.parseInt(scanner.nextLine());
             System.out.println("\nAntall sett:");
-            String sett = scanner.nextLine();
+            int sett = Integer.parseInt(scanner.nextLine());
             System.out.println("\nAntall repetisjoner:");
-            String reps = scanner.nextLine();
+            int reps = Integer.parseInt(scanner.nextLine());
             System.out.println("\nBelastning i kilo:");
-            String belastning = scanner.nextLine();
-            int OvelseID = db.getOvelseID(nyovelse);
-   //         db.setOktOvelse(form, prestasjon, sett, reps, belastning, OvelseID)
+            int belastning = Integer.parseInt(scanner.nextLine());
+            int OvelseID = db.getOvelseID(ovelse);
+            db.setOktOvelse(OvelseID, OktID, form, prestasjon, sett, reps, belastning);
             
 	    	  }
 	    	  
