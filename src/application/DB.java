@@ -103,8 +103,29 @@ public class DB
     catch(SQLException e){ System.out.println(e); }
   }
 
-  public void setOktOvelse(Integer form, Integer prestasjon, Integer sett, Integer reps, Integer belastning, Integer id) {
-    String sql = "INSERT INTO OktOvelse (Navn, Beskrivelse) VALUES ('" + navn + "', '" + beskrivelse + "')";
+  public void setOktOvelse(Integer ovelse_id, Integer okt_id, Integer form, Integer prestasjon, Integer sett, Integer reps, Integer belastning) {
+    String sql = "INSERT INTO OktOvelse (OvelseID, OktID, Form, Prestasjon) VALUES ('" + ovelse_id + "', '" + okt_id + "', '" + form + "', '" + prestasjon  + "')";
+    try (Connection connection = this.connect();) {
+      Statement statement = connection.createStatement();
+      statement.setQueryTimeout(10);  // Timeout is 10s
+      statement.executeUpdate(sql);
+    }
+    catch(SQLException e){ System.out.println(e); }
+
+    // Get ID of new OktOvelse
+    Integer id = 0;
+    try (Connection connection = this.connect();) {
+      Statement statement = connection.createStatement();
+      statement.setQueryTimeout(10);  // Timeout is 10s
+      
+      ResultSet resultSet = statement.executeQuery("SELECT * FROM OktOvelse ORDER BY OktOvelseID DESC LIMIT 1");
+      while (resultSet.next()) {    
+        id = resultSet.getInt("OktOvelseID");
+      }
+    }
+    catch(SQLException e){ System.out.println(e); }
+
+    String sql = "INSERT INTO Styrke (OktOvelseID, Sett, Repetisjoner, Belastning) VALUES ('" + id + "', '" + sett + "', '" + reps + "', '" + belastning  + "')";
     try (Connection connection = this.connect();) {
       Statement statement = connection.createStatement();
       statement.setQueryTimeout(10);  // Timeout is 10s
