@@ -40,4 +40,22 @@ public class DB
     }
     catch(SQLException e){ System.err.println(e.getMessage()); }
   }
+
+  public boolean checkOvelse(String ovelse_navn) {
+    String sql = "SELECT * FROM Ovelse WHERE Navn = " + ovelse_navn;
+    Boolean exists = true;
+    
+    try (Connection connection = this.connect();) {
+      Statement statement = connection.createStatement();
+      statement.setQueryTimeout(10);  // Timeout is 10s
+
+      ResultSet resultSet = statement.executeQuery(sql);
+      
+      if (!resultSet.next() ) {    
+        exists = false;
+      }
+    }
+    catch(SQLException e){ System.err.println(e.getMessage()); }
+    return exists;
+  }
 }
