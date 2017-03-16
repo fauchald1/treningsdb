@@ -5,6 +5,7 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.*;
 
 public class DB
   {
@@ -39,6 +40,25 @@ public class DB
       }
     }
     catch(SQLException e){ System.err.println(e.getMessage()); }
+  }
+
+  public double getBest(String ovelse) {
+    String sql = "SELECT * FROM Styrke";
+    Double best = 0.0;
+    //List<double> data = new ArrayList<double>();
+    try (Connection connection = this.connect();) {
+      Statement statement = connection.createStatement();
+      statement.setQueryTimeout(10);  // Timeout is 10s
+      ResultSet resultSet = statement.executeQuery(sql);
+      while(resultSet.next()) {
+        Double current = resultSet.getDouble("belastning");
+        if (current > best) {
+          best = current;
+        }
+      }
+    }
+    catch(SQLException e){ System.err.println(e.getMessage()); }
+    return best;
   }
 
   public Integer getOvelseID(String ovelse_navn) {
